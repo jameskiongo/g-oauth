@@ -1,12 +1,18 @@
 const express = require("express");
-const cookieSession = require("cookie-session");
 const app = express()
+const cookieSession = require("cookie-session");
+const passport = require("passport");
+const passportSetup = require("./passport");
+const authRoute = require("./routes/auth")
+const cors = require("cors")
 
-app.arguments(cookieSession({
-    name: "session",
-    keys:["lama"],
-    maxAge: 24*60*60*100
-}));
+app.use(cookieSession(
+    {
+        name: "session",
+        keys: ["lama"],
+        maxAge: 24*60*60*100
+    }
+))
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -16,6 +22,8 @@ app.use(cors({
     credentials: true,
 }))
 
-app.listen("5000", ()=>{
+app.use("/auth", authRoute);
+
+app.listen(5555, () => {
     console.log("server is running")
 })
