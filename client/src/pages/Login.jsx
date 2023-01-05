@@ -1,12 +1,15 @@
 import React from 'react'
 
 function Login() {
+    const google = ()=>{
+        window.open("http://localhost:5555/auth/google","_self")
+    }
     return (
     <div className='login'>
         <h1 className="loginTitle">Choose your Login method</h1>
         <div className="wrapper">
             <div className="left">
-                <div className="loginButton google">
+                <div className="loginButton google" onClick={google}>
                     <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-icon.png" alt="" className="icon" />
                     Google
                     </div>

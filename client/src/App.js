@@ -1,3 +1,4 @@
+import React from 'react'
 import './App.css';
 import Navbar from "./components/Navbar"
 import Home from './pages/Home';
@@ -6,11 +7,11 @@ import Post from './pages/Post';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 const App = () =>{
-  const user = true;
+  const user = false;
   return (
   <div>
-    <Navbar />
     <BrowserRouter>
+    <Navbar user={user}/>
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path='/Login' element={user? <Navigate to="/" />:<Login />} />

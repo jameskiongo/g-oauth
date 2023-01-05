@@ -1,11 +1,13 @@
-import { Link } from "react-router-dom"
+import * as React from 'react'
+import { Link } from 'react-router-dom'
 
-const Navbar = () =>{
+const Navbar = ({user}) =>{
     return(
         <div className="navbar">
-            <span className="logo">
-                <Link to="/">James App</Link>
-            </span>
+            <h1 className="logo">
+                <Link to="/" className='link'>James App</Link>
+            </h1>{
+                user ? (
             <ul className="list">
                 <li className="listItem">
                     <img src="https://xsgames.co/randomusers/assets/images/favicon.png" className="avatar" alt="avatar"/>
@@ -13,6 +15,8 @@ const Navbar = () =>{
                 <li className="listItem">John Doe</li>
                 <li className="listItem">Logout</li>
             </ul>
+            ): (<Link to="login" className='link'>Login</Link>)
+        }
         </div>
     )
 }
